@@ -46,6 +46,7 @@ function copyData(e)
 
      //var removeItem = document.getElementById('hatao');
      DeleteBanao.addEventListener('click',removeData);
+     DeleteBanao.myParam = key;
 
       
 
@@ -61,8 +62,10 @@ function copyData(e)
 function removeData(e)
 {
     e.preventDefault();
+    //console.log(e.target.parentNode.value);
     e.target.parentNode.remove();
-    //console.log(a);
+    localStorage.removeItem(e.target.myParam);
+    
     
    
 }
