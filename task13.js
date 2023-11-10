@@ -1,6 +1,7 @@
 var formTake = document.getElementById('demo');
 var captureuL = document.getElementById('displayUsers');
 
+
 //console.log(captureuL);
 
 
@@ -16,22 +17,50 @@ function copyData(e)
     var userContact = document.getElementById('Phone').value;
     var time = document.getElementById('board').value;
     
-    var myObj = {
-        'Name':userName,
-        'Email':userEmail,
-        'Phone':userContact,
-        'Time':time
+    // let options = {
+    //     method: 'post',
+    //     url: 'https://crudcrud.com/api/c5ee0adad57b4447815c92a84b0a5abc/abc',
+    //     headers: {
+    //         Content_type:'application/json'
+    //     }, 
+    //     data: {
+    //         'Name':userName,
+    //         'Email':userEmail,
+    //         'Phone':userContact,
+    //         'Time':time
+    //     }
+    // }
 
+
+    let myObj = {
+            'Name':userName,
+            'Email':userEmail,
+            'Phone':userContact,
+            'Time':time
     };
 
+    // let data = {
+    //     "name":"subham"
+    // }
+
+    axios.post('https://crudcrud.com/Dashboard/d79825f27a204d10a079a980016129d4/Expendables', myObj)
+    .then((value)=>
+    {
+        console.log(value);
+    //    document.getElementById('displayUsers').innerHTML = value.data["Name"];
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+
     let key = new Date().toLocaleString();
-    var myObj_stringForm = JSON.stringify(myObj);
+    // var myObj_stringForm = JSON.stringify(myObj);
     // //console.log(myObj_serialized);
 
 
-      localStorage.setItem(key,myObj_stringForm);
+      //localStorage.setItem(key,myObj_stringForm);
       //console.log(localStorage);
-
+    
      var showUser = document.createElement('li');
      showUser.textContent = "Name:" + userName + " Email:" + userEmail + " Contact-Number:" + userContact + " Time of Appointment:" + time;
      showUser.style.color = "white";
@@ -63,6 +92,8 @@ function copyData(e)
      document.getElementById('Email').value = "";
      document.getElementById('Phone').value = "";
      document.getElementById('board').value = "";
+
+        
 
      
 }
