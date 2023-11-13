@@ -7,6 +7,20 @@ var captureuL = document.getElementById('displayUsers');
 
 formTake.addEventListener('submit',copyData);
 
+window.onload = function()
+{
+    axios.get("https://crudcrud.com/api/68d11cd7b7d74926be35f53c6d5e5882/abc")
+    .then(value=>
+        {
+            console.log(value.data[2]);
+            document.getElementById('displayUsers').innerHTML = 
+            "Name:"+value.data[2]["Name"] + "Email:"+value.data[2]["Email"] + "Phone:"+value.data[2]["Phone"] + "Time:"+value.data[2]["Time"];
+        })
+    .catch(err=> console.log(err));    
+};
+
+
+
 
 
 function copyData(e)
@@ -43,10 +57,10 @@ function copyData(e)
     //     "name":"subham"
     // }
 
-    axios.post('https://crudcrud.com/Dashboard/d79825f27a204d10a079a980016129d4/Expendables', myObj)
+    axios.post('https://crudcrud.com/api/68d11cd7b7d74926be35f53c6d5e5882/abc',myObj )
     .then((value)=>
     {
-        console.log(value);
+        //console.log(value);
     //    document.getElementById('displayUsers').innerHTML = value.data["Name"];
     })
     .catch((err) => {
@@ -61,29 +75,29 @@ function copyData(e)
       //localStorage.setItem(key,myObj_stringForm);
       //console.log(localStorage);
     
-     var showUser = document.createElement('li');
-     showUser.textContent = "Name:" + userName + " Email:" + userEmail + " Contact-Number:" + userContact + " Time of Appointment:" + time;
-     showUser.style.color = "white";
+    //  var showUser = document.createElement('li');
+    //  showUser.textContent = "Name:" + userName + " Email:" + userEmail + " Contact-Number:" + userContact + " Time of Appointment:" + time;
+    //  showUser.style.color = "white";
      
 
-     var DeleteBanao = document.createElement('button');
-     DeleteBanao.setAttribute('id','hatao');
-     DeleteBanao.textContent = 'Remove';
-     showUser.appendChild(DeleteBanao);
+    //  var DeleteBanao = document.createElement('button');
+    //  DeleteBanao.setAttribute('id','hatao');
+    //  DeleteBanao.textContent = 'Remove';
+    //  showUser.appendChild(DeleteBanao);
 
-     var editBanao = document.createElement('button');
-     editBanao.setAttribute('id','makechanges');
-     editBanao.textContent = 'Edit';
-     showUser.appendChild(editBanao);
+    //  var editBanao = document.createElement('button');
+    //  editBanao.setAttribute('id','makechanges');
+    //  editBanao.textContent = 'Edit';
+    //  showUser.appendChild(editBanao);
      
-     captureuL.appendChild(showUser);
+    //  captureuL.appendChild(showUser);
 
-     editBanao.addEventListener('click',editData);
-     editBanao.myParam = key;
+    //  editBanao.addEventListener('click',editData);
+    //  editBanao.myParam = key;
 
-     //var removeItem = document.getElementById('hatao');
-     DeleteBanao.addEventListener('click',removeData);
-     DeleteBanao.myParam = key;
+    //  //var removeItem = document.getElementById('hatao');
+    //  DeleteBanao.addEventListener('click',removeData);
+    //  DeleteBanao.myParam = key;
 
       
 
